@@ -3,8 +3,8 @@
 A colour theme based on Hatsune Miku. (Dark Theme)
 
 ## How it looks:
-![Image of the theme without the editor open](<Screenshot No Editor View.png>)
-![Image of the theme with the editor open](<Screenshot Editor View.png>)
+![Image of the theme without the editor open](./ScreenshotNoEditorView.png)
+![Image of the theme with the editor open](./ScreenshotEditorView.png)
 
 ## How to use:
 Click on the settings icon in vs code, hover your cursor over "Themes" then select "Color Theme".
