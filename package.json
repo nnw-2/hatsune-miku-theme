@@ -4,6 +4,7 @@
   "description": "A dark colour theme based on Hatsune Miku for vs code.",
   "version": "1.0.0",
   "icon": "IconImage.png",
+  "publisher": "nnw-2",
   "repository": {
     "type": "git",
     "url": "https://github.com/nnw-2/hatsune-miku-theme.github"
