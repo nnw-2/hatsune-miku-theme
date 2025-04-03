@@ -5,7 +5,7 @@
   "version": "1.0.3",
   "icon": "IconImage.png",
   "publisher": "nnw-2",
-  "repository": "",
+  "repository": "https://github.com/nnw-2/hatsune-miku-theme.git",
   "engines": {
     "vscode": "^1.98.0"
   },
