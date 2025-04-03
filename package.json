@@ -6,7 +6,7 @@
   "icon": "IconImage.png",
   "publisher": "nnw-2",
   "repository": {
-    "type": "git",
+    "type": "github",
     "url": "https://github.com/nnw-2/hatsune-miku-theme"
   },
   "engines": {
