@@ -1,3 +1,5 @@
-## [Unreleased]
+## [1.0.0] - 2025-04-03
 
-- Initial release
+### Changes
+
+* Initial release of the Hatsune Miku theme
