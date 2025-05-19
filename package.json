@@ -2,7 +2,7 @@
   "name": "hatsune-miku-theme",
   "displayName": "Hatsune Miku Theme",
   "description": "A dark colour theme based on Hatsune Miku for vs code.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "icon": "IconImage.png",
   "publisher": "nnw-2",
   "repository": {"type": "github",
@@ -13,6 +13,10 @@
   },
   "categories": [
     "Themes"
+  ],
+  "keywords": [
+    "miku",
+    "dark"
   ],
   "contributes": {
     "themes": [
