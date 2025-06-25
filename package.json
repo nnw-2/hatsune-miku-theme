@@ -1,30 +1,70 @@
 {
-  "name": "hatsune-miku-theme",
-  "displayName": "Hatsune Miku Theme",
-  "description": "A dark colour theme based on Hatsune Miku for vs code.",
-  "version": "1.0.7",
-  "icon": "IconImage.png",
-  "publisher": "nnw-2",
-  "repository": {"type": "github",
-    "url":"https://github.com/nnw-2/hatsune-miku-theme"},
-  "homepage": "https://github.com/nnw-2/hatsune-miku-theme",
-  "engines": {
-    "vscode": "^1.90.0"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "keywords": [
-    "miku",
-    "dark"
-  ],
-  "contributes": {
-    "themes": [
-      {
-        "label": "Hatsune Miku",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Hatsune Miku-color-theme.json"
-      }
-    ]
-  }
+    "name": "hatsune-miku-theme",
+    "displayName": "Hatsune Miku Theme",
+    "description": "A dark colour theme based on Hatsune Miku for vs code.",
+    "version": "1.0.7",
+    "icon": "IconImage.png",
+    "publisher": "nnw-2",
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/nnw-2/hatsune-miku-theme"
+    },
+    "homepage": "https://github.com/nnw-2/hatsune-miku-theme",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "keywords": [
+        "miku",
+        "dark"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "themes": [
+            {
+                "label": "Hatsune Miku",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Hatsune Miku-color-theme.json"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "mikuActivityBar",
+                    "title": "Miku Theme",
+                    "icon": "ActivityBarIcon.png"
+                }
+            ]
+        },
+        "views": {
+            "mikuActivityBar": [
+                {
+                    "id": "mikuActivityBarContent",
+                    "name": "Editor Customiser",
+                    "icon": "ActivityBarIcon.png"
+                }
+            ]
+        },
+        "viewsWelcome": [
+            {
+                "view": "mikuActivityBarContent",
+                "contents": "Click button to change the editor colours.\n[Change background highlight colour.](command:changeThemeEditor.changecolourWordHighlightBackground)\n[Change background border colour.](command:changeThemeEditor.changecolourWordHighlightBorder)"
+            }
+        ],
+        "commands": [
+            {
+                "command": "changeThemeEditor.changecolourWordHighlightBackground",
+                "title": "Change Colours of Word Highlight Background"
+            },
+            {
+                "command": "changeThemeEditor.changecolourWordHighlightBorder",
+                "title": "Change Colours of Word Highlight Border"
+            }
+        ]
+    },
+    "devDependencies": {
+        "vscode": "^1.90.0"
+    }
 }
