@@ -2167,7 +2167,7 @@ function registering(commandId , colourTrue , context) {
 			true
 		);
 
-		vscode.commands.executeCommand('workbench.action.restartExtensionHost');
+		vscode.commands.executeCommand('workbench.action.reloadWindow');
 	});
 	context.subscriptions.push(command)
 }
