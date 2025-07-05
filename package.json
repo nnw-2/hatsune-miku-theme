@@ -2,7 +2,7 @@
     "name": "hatsune-miku-theme",
     "displayName": "Hatsune Miku Theme",
     "description": "A dark colour theme based on Hatsune Miku for vs code.",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "icon": "IconImage.png",
     "publisher": "nnw-2",
     "repository": {
@@ -50,17 +50,25 @@
         "viewsWelcome": [
             {
                 "view": "mikuActivityBarContent",
-                "contents": "Click button to change the editor colours.\n[Change background highlight colour.](command:changeThemeEditor.changecolourWordHighlightBackground)\n[Change background border colour.](command:changeThemeEditor.changecolourWordHighlightBorder)"
+                "contents": "This will change the background of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour](command:changeThemeEditor.changecolourWordHighlightBackground)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBackground)\nThis changes the border of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour.](command:changeThemeEditor.changecolourWordHighlightBorder)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBorder)\nThis is a WIP more will be added over time."
             }
         ],
         "commands": [
             {
                 "command": "changeThemeEditor.changecolourWordHighlightBackground",
-                "title": "Change Colours of Word Highlight Background"
+                "title": "Miku Theme: Change Colours of Word Highlight Background"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyWordHighlightBackground",
+                "title": "Miku Theme: Change Transparency of Word Highlight Background"
             },
             {
                 "command": "changeThemeEditor.changecolourWordHighlightBorder",
-                "title": "Change Colours of Word Highlight Border"
+                "title": "Miku Theme: Change Colours of Word Highlight Border"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyWordHighlightBorder",
+                "title": "Miku Theme: Change Transparency of Word Highlight Border"
             }
         ]
     },

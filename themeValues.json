@@ -1,0 +1,10 @@
+{
+  "colours": {
+    "changeThemeEditor.changecolourWordHighlightBackground": "264f78",
+    "changeThemeEditor.changecolourWordHighlightBorder": "ff0000"
+  },
+  "transparency": {
+    "changeThemeEditor.changetransparencyWordHighlightBackground": "b5",
+    "changeThemeEditor.changetransparencyWordHighlightBorder": "00"
+  }
+}
