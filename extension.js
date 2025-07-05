@@ -2166,6 +2166,8 @@ function registering(commandId , colourTrue , context) {
 			'Hatsune Miku',
 			true
 		);
+
+		vscode.commands.executeCommand('workbench.action.restartExtensionHost');
 	});
 	context.subscriptions.push(command)
 }

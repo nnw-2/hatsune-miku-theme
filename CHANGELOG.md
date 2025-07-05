@@ -1,4 +1,4 @@
-## [1.1.0] - 2025-07-05
+## [1.1.1] - 2025-07-05
 
 ### Changes
 
@@ -8,3 +8,4 @@
 * Making the theme be installable on earlier vs code versions (1.90.0 now the earliest compatable version)
 * Adding miku and dark tags/keywords for vs code marketplace
 * Added the theme editor allowing the user to change colour and transparency of things within the editor.
+* Hopefully fixed unwanted behaviour from theme editor which wasn't present when testing - user needing to reload window manually to see changes.
