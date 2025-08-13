@@ -1,9 +1,8 @@
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
+const packageJson = require('./package.json')
 
-//What I want to do next before publishing new version - Add the starting text for content of the view in the readme
-//also change the current content to just have 1 para explaining and 4 button as their is repeating unneeded text
 
 
 //REMINDER TO PUT FALSE FOR TRANSPARENCY GETTING OF VALUES OR UNDEFINED IS RETURNED AND EDITOR BREAKS
@@ -2173,11 +2172,59 @@ function registering(commandId , colourTrue , context) {
 }
 
 function activate(context) {
-	const commandIds = require('./package.json').contributes.viewsWelcome[0].contents.match(/\(command:(.*?)\)/g);
-	commandIds.forEach(commandId => {
-		registering(commandId.replace(/command:|\(|\)/g, '') , commandId.match("changeThemeEditor.changecolour") == "changeThemeEditor.changecolour" , context);
-	})
+	var viewSectionsDisplayed = ["A"] // This will be the stack containing the thing that decides "when", 
+									// the first element should always be the default view
+	
+	var possibleCommandsToExecute = [] //list which will hold strings of commands which should be executed when a button is pressed
+
+	vscode.commands.executeCommand('setContext', 'currentView', "A");
+
+	const changeDisplayedView = vscode.commands.registerCommand("changeDisplayedView", (WhichViewToDisplay) => {
+		if (WhichViewToDisplay[0] == "_") {
+			commandsToPush = WhichViewToDisplay.split('_').slice(1, -1);
+			commandsToPush.length == 1 ? (possibleCommandsToExecute.push(commandsToPush[0]), WhichViewToDisplay = "oneButton") : (possibleCommandsToExecute.push(commandsToPush[0],commandsToPush[2]), WhichViewToDisplay = "twoButtons");
+		}
+		viewSectionsDisplayed.push(WhichViewToDisplay);
+		vscode.commands.executeCommand('setContext', 'currentView', WhichViewToDisplay);
+	});
+	context.subscriptions.push(changeDisplayedView);
+
+	const returnPreviousDisplayedView = vscode.commands.registerCommand("returnPreviousDisplayedView", () => {
+		viewSectionsDisplayed.pop();
+		vscode.commands.executeCommand('setContext', 'currentView', viewSectionsDisplayed[viewSectionsDisplayed.length - 1]);
+	});
+	context.subscriptions.push(returnPreviousDisplayedView)
+
+	const executeFinalCommand = vscode.commands.registerCommand("executeFinalCommand", (whichIndex) => {
+		if (whichIndex == "zero"){
+			vscode.commands.executeCommand("changeThemeEditor." + possibleCommandsToExecute[0]);
+		}
+		else {
+			vscode.commands.executeCommand("changeThemeEditor." + possibleCommandsToExecute[1]);
+		}
+	});
+	context.subscriptions.push(executeFinalCommand)
+
+	const returnPreviousDisplayedViewFinal = vscode.commands.registerCommand("returnPreviousDisplayedViewFinal", () => {
+		viewSectionsDisplayed.pop();
+		vscode.commands.executeCommand('setContext', 'currentView', viewSectionsDisplayed[viewSectionsDisplayed.length - 1]);
+		possibleCommandsToExecute.length = 0;
+	});
+	context.subscriptions.push(returnPreviousDisplayedViewFinal)
+
+	for (let i =0; i < packageJson.contributes.viewsWelcome.length; i++) {
+		const commandIds = packageJson.contributes.viewsWelcome[i].contents.match(/\(command:changeThemeEditor(.*?)\)/g);
+		if (commandIds != null) (
+			commandIds.forEach(commandId => {
+			registering(commandId.replace(/command:|\(|\)/g, '') , commandId.match("changeThemeEditor.changecolour") == "changeThemeEditor.changecolour" , context);
+			})
+		)
+	};
 }
+
+//What I still want to do - add deactivate function to handle what happens when the extension reloads window
+//so that the view doesn't reset everytime the user changes their theme, only when closing then reopening vscode.
+//To do this, before executing reload window update a value to know it is a wanted calling of deactivate.
 
 module.exports = {
   activate

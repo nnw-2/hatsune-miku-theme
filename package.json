@@ -2,7 +2,7 @@
     "name": "hatsune-miku-theme",
     "displayName": "Hatsune Miku Theme",
     "description": "A dark colour theme based on Hatsune Miku for vs code.",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "icon": "IconImage.png",
     "publisher": "nnw-2",
     "repository": {
@@ -52,8 +52,44 @@
         },
         "viewsWelcome": [
             {
+                "view" : "mikuActivityBarContent",
+                "contents": "The below options will only change things within the editor.\nTHIS IS STILL A WORK IN PROGRESS.\nNew updates will unfortunately reset any changes made to the editor before the update, so expect you needing to reinput values every once in a while until the completion of this project.\n[Change Background Colour or Transparency](command:changeDisplayedView?[\"B\"])\n[Change Border Colour or Transparency](command:changeDisplayedView?[\"C\"])\n[Change Colours of Syntax](command:changeDisplayedView?[\"D\"])",
+                "when" : "currentView == 'A'"
+            },
+            {
+                "view" : "mikuActivityBarContent",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])",
+                "when" : "currentView == 'B'"
+            },
+            {
+                "view" : "mikuActivityBarContent",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])",
+                "when" : "currentView == 'C'"
+            },
+            {
+                "view" : "mikuActivityBarContent",
+                "contents": "[Return](command:returnPreviousDisplayedView)",
+                "when" : "currentView == 'D'"
+            },
+            {
                 "view": "mikuActivityBarContent",
-                "contents": "This will change the background of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour](command:changeThemeEditor.changecolourWordHighlightBackground)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBackground)\nThis changes the border of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour.](command:changeThemeEditor.changecolourWordHighlightBorder)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBorder)\nThis is a WIP more will be added over time."
+                "contents": "[Change To View B](command:changeDisplayedView?[\"B\"])\nThis will change the background of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour](command:changeThemeEditor.changecolourWordHighlightBackground)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBackground)\nThis changes the border of variables, functions, classes, numbers, booleans and strings which are selected with the cursor.\n[Change Colour.](command:changeThemeEditor.changecolourWordHighlightBorder)\n[Change Transparency](command:changeThemeEditor.changetransparencyWordHighlightBorder)\nThis is a WIP more will be added over time.",
+                "when": "currentView == 'ChangeLtr'"
+            },
+            {
+                "view": "mikuActivityBarContent",
+                "contents": "[Change To View A](command:changeDisplayedView?[\"A\"])\n[Return To View A](command:returnPreviousDisplayedView)",
+                "when": "currentView == 'ChangeLtrtwo'"
+            },
+            {
+                "view": "mikuActivityBarContent",
+                "contents": "[Return](command:returnPreviousDisplayedViewFinal)\n[Change Colour](command:executeFinalCommand?[\"zero\"])",
+                "when": "currentView == 'oneButton'"
+            },
+            {
+                "view": "mikuActivityBarContent",
+                "contents": "[Return](command:returnPreviousDisplayedViewFinal)\n[Change Colour](command:executeFinalCommand?[\"zero\"])\n[Change Transparency](command:executeFinalCommand?[\"one\"])",
+                "when": "currentView == 'twoButtons'"
             }
         ],
         "commands": [
@@ -72,6 +108,22 @@
             {
                 "command": "changeThemeEditor.changetransparencyWordHighlightBorder",
                 "title": "Miku Theme: Change Transparency of Word Highlight Border"
+            },
+            {
+                "command": "changeDisplayedView",
+                "title": "Miku Theme: Don't Use This Command"
+            },
+            {
+                "command": "returnPreviousDisplayedView",
+                "title": "Miku Theme: Don't Use This Command 2"
+            },
+            {
+                "command": "executeFinalCommand",
+                "title": "Miku Theme: Don't Use This Command 3"
+            },
+            {
+                "command": "returnPreviousDisplayedViewFinal",
+                "title": "Miku Theme: Don't Use This Command 4"
             }
         ]
     },

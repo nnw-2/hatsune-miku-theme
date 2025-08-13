@@ -21,9 +21,11 @@ When making changes the editor is permanently changed to the new value, there is
 to the number of times you can make changes.
 When clicking a button you are given the ability to cancel or follow the instructions and confirm
 a change.
+## Image of the Editor Customiser
+![Image of Editor Customiser](/Images/ScreenshotSidebar.png)
 
 
-## Mostly created using https://themes.vscode.one/
+## Theme part of extension mostly created using https://themes.vscode.one/
 
 ## License
 

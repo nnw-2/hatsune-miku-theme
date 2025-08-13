@@ -1,4 +1,4 @@
-## [1.1.2] - 2025-07-05
+## [1.1.3] - 2025-08-13
 
 ### Changes
 
@@ -9,3 +9,4 @@
 * Adding miku and dark tags/keywords for vs code marketplace
 * Added the theme editor allowing the user to change colour and transparency of things within the editor.
 * Hopefully fixed unwanted behaviour from theme editor which wasn't present when testing - user needing to reload window manually to see changes.
+* Added a better interface for the editor customiser to account for the many new buttons which will need to be added.
