@@ -58,12 +58,12 @@
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Of Thing Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])\n[Change Background Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBackground__changetransparencyLineHighlightBackground_\"])",
                 "when" : "currentView == 'B'"
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])\n[Change Border Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBorder__changetransparencyLineHighlightBorder_\"])",
                 "when" : "currentView == 'C'"
             },
             {
@@ -108,6 +108,22 @@
             {
                 "command": "changeThemeEditor.changetransparencyWordHighlightBorder",
                 "title": "Miku Theme: Change Transparency of Word Highlight Border"
+            },
+            {
+                "command": "changeThemeEditor.changecolourLineHighlightBackground",
+                "title": "Miku Theme: Change Colours of Line Highlight Background"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyLineHighlightBackground",
+                "title": "Miku Theme: Change Transparency of Line Highlight Background"
+            },
+            {
+                "command": "changeThemeEditor.changecolourLineHighlightBorder",
+                "title": "Miku Theme: Change Colours of Line Highlight Border"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyLineHighlightBorder",
+                "title": "Miku Theme: Change Transparency of Line Highlight Border"
             },
             {
                 "command": "changeDisplayedView",
