@@ -3,8 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const packageJson = require('./package.json')
 
-
-
 //REMINDER TO PUT FALSE FOR TRANSPARENCY GETTING OF VALUES OR UNDEFINED IS RETURNED AND EDITOR BREAKS
 
 //ff will be the default transparency value if there isn't already a transparency value attatched by default.
@@ -13,7 +11,13 @@ const defaultValues = {
 	"changeThemeEditor.changetransparencyWordHighlightBackground" : "b5",
 
 	"changeThemeEditor.changecolourWordHighlightBorder": "ff0000",
-	"changeThemeEditor.changetransparencyWordHighlightBorder" : "00"
+	"changeThemeEditor.changetransparencyWordHighlightBorder" : "00",
+
+	"changeThemeEditor.changecolourLineHighlightBackground": "019ebb",
+	"changeThemeEditor.changetransparencyLineHighlightBackground" : "5a",
+
+	"changeThemeEditor.changecolourLineHighlightBorder": "4b4044",
+	"changeThemeEditor.changetransparencyLineHighlightBorder" : "a1"
 };
 
 function getOrSetThemeValues(commandId , colourTrue , getOrSet="get" , updateValue=null) {
@@ -1976,8 +1980,8 @@ function themeConfig(commandId , updateValue , colourTrue) {
 	"editor.wordHighlightStrongBorder": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBorder",false),
 	"editor.wordHighlightBackground": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBackground",false),
 	"editor.wordHighlightBorder": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBorder",false),
-	"editor.lineHighlightBackground": "#019ebb5a", //changes the background of the current line
-	"editor.lineHighlightBorder": "#4b4044a1",    //changes the border of the current line
+	"editor.lineHighlightBackground": "#" + getOrSetThemeValues("changeThemeEditor.changecolourLineHighlightBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyLineHighlightBackground",false),
+	"editor.lineHighlightBorder": "#" + getOrSetThemeValues("changeThemeEditor.changecolourLineHighlightBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyLineHighlightBorder",false),
 	"editorLineNumber.activeForeground": "#00f9ff",
 	"editorLink.activeForeground": "#df0f60",
 	"editorIndentGuide.background1": "#29ccd09f",
@@ -2165,67 +2169,80 @@ function registering(commandId , colourTrue , context) {
 			'Hatsune Miku',
 			true
 		);
-
+		
+		actDeact.intendedClose = true
 		vscode.commands.executeCommand('workbench.action.reloadWindow');
 	});
 	context.subscriptions.push(command)
 }
 
-function activate(context) {
-	var viewSectionsDisplayed = ["A"] // This will be the stack containing the thing that decides "when", 
-									// the first element should always be the default view
-	
-	var possibleCommandsToExecute = [] //list which will hold strings of commands which should be executed when a button is pressed
+class actDeact {
+	static intendedClose = false
+	static viewSectionsDisplayed = JSON.parse(fs.readFileSync(path.join(__dirname, "intendedValuesSomeVariables.json"), 'utf8')).viewSectionsDisplayed
+	static possibleCommandsToExecute = JSON.parse(fs.readFileSync(path.join(__dirname, "intendedValuesSomeVariables.json"), 'utf8')).possibleCommandsToExecute
 
-	vscode.commands.executeCommand('setContext', 'currentView', "A");
+	static activate(context) {
 
-	const changeDisplayedView = vscode.commands.registerCommand("changeDisplayedView", (WhichViewToDisplay) => {
-		if (WhichViewToDisplay[0] == "_") {
-			commandsToPush = WhichViewToDisplay.split('_').slice(1, -1);
-			commandsToPush.length == 1 ? (possibleCommandsToExecute.push(commandsToPush[0]), WhichViewToDisplay = "oneButton") : (possibleCommandsToExecute.push(commandsToPush[0],commandsToPush[2]), WhichViewToDisplay = "twoButtons");
+		vscode.commands.executeCommand('setContext', 'currentView', actDeact.viewSectionsDisplayed[actDeact.viewSectionsDisplayed.length - 1]);
+
+		const changeDisplayedView = vscode.commands.registerCommand("changeDisplayedView", (WhichViewToDisplay) => {
+			console.log(WhichViewToDisplay);
+			if (WhichViewToDisplay[0] == "_") {
+				var commandsToPush = WhichViewToDisplay.split('_').slice(1, -1);
+				commandsToPush.length == 1 ? (actDeact.possibleCommandsToExecute.push(commandsToPush[0]), WhichViewToDisplay = "oneButton") : (actDeact.possibleCommandsToExecute.push(commandsToPush[0],commandsToPush[2]), WhichViewToDisplay = "twoButtons");
+			}
+			actDeact.viewSectionsDisplayed.push(WhichViewToDisplay);
+			vscode.commands.executeCommand('setContext', 'currentView', WhichViewToDisplay);
+		});
+		context.subscriptions.push(changeDisplayedView);
+
+		const returnPreviousDisplayedView = vscode.commands.registerCommand("returnPreviousDisplayedView", () => {
+			actDeact.viewSectionsDisplayed.pop();
+			vscode.commands.executeCommand('setContext', 'currentView', actDeact.viewSectionsDisplayed[actDeact.viewSectionsDisplayed.length - 1]);
+		});
+		context.subscriptions.push(returnPreviousDisplayedView)
+
+		const executeFinalCommand = vscode.commands.registerCommand("executeFinalCommand", (whichIndex) => {
+			if (whichIndex == "zero"){
+				vscode.commands.executeCommand("changeThemeEditor." + actDeact.possibleCommandsToExecute[0]);
+			}
+			else {
+				vscode.commands.executeCommand("changeThemeEditor." + actDeact.possibleCommandsToExecute[1]);
+			}
+		});
+		context.subscriptions.push(executeFinalCommand)
+
+		const returnPreviousDisplayedViewFinal = vscode.commands.registerCommand("returnPreviousDisplayedViewFinal", () => {
+			actDeact.viewSectionsDisplayed.pop();
+			vscode.commands.executeCommand('setContext', 'currentView', actDeact.viewSectionsDisplayed[actDeact.viewSectionsDisplayed.length - 1]);
+			actDeact.possibleCommandsToExecute.length = 0;
+		});
+		context.subscriptions.push(returnPreviousDisplayedViewFinal)
+
+		for (let i =0; i < packageJson.contributes.commands.length; i++) {
+			const commandId = packageJson.contributes.commands[i].command
+			if (commandId.slice(0,17) == "changeThemeEditor") {
+				registering(commandId , commandId.slice(18,30) == "changecolour" , context);
+			}
 		}
-		viewSectionsDisplayed.push(WhichViewToDisplay);
-		vscode.commands.executeCommand('setContext', 'currentView', WhichViewToDisplay);
-	});
-	context.subscriptions.push(changeDisplayedView);
-
-	const returnPreviousDisplayedView = vscode.commands.registerCommand("returnPreviousDisplayedView", () => {
-		viewSectionsDisplayed.pop();
-		vscode.commands.executeCommand('setContext', 'currentView', viewSectionsDisplayed[viewSectionsDisplayed.length - 1]);
-	});
-	context.subscriptions.push(returnPreviousDisplayedView)
-
-	const executeFinalCommand = vscode.commands.registerCommand("executeFinalCommand", (whichIndex) => {
-		if (whichIndex == "zero"){
-			vscode.commands.executeCommand("changeThemeEditor." + possibleCommandsToExecute[0]);
-		}
-		else {
-			vscode.commands.executeCommand("changeThemeEditor." + possibleCommandsToExecute[1]);
-		}
-	});
-	context.subscriptions.push(executeFinalCommand)
-
-	const returnPreviousDisplayedViewFinal = vscode.commands.registerCommand("returnPreviousDisplayedViewFinal", () => {
-		viewSectionsDisplayed.pop();
-		vscode.commands.executeCommand('setContext', 'currentView', viewSectionsDisplayed[viewSectionsDisplayed.length - 1]);
-		possibleCommandsToExecute.length = 0;
-	});
-	context.subscriptions.push(returnPreviousDisplayedViewFinal)
-
-	for (let i =0; i < packageJson.contributes.viewsWelcome.length; i++) {
-		const commandIds = packageJson.contributes.viewsWelcome[i].contents.match(/\(command:changeThemeEditor(.*?)\)/g);
-		if (commandIds != null) (
-			commandIds.forEach(commandId => {
-			registering(commandId.replace(/command:|\(|\)/g, '') , commandId.match("changeThemeEditor.changecolour") == "changeThemeEditor.changecolour" , context);
-			})
-		)
 	};
 }
 
-//What I still want to do - add deactivate function to handle what happens when the extension reloads window
-//so that the view doesn't reset everytime the user changes their theme, only when closing then reopening vscode.
-//To do this, before executing reload window update a value to know it is a wanted calling of deactivate.
+
+function activate (context) {
+	actDeact.activate(context);
+}
+
+function deactivate () {
+	if (actDeact.intendedClose == true) {
+		fs.writeFileSync(path.join(__dirname, "intendedValuesSomeVariables.json"), JSON.stringify({"viewSectionsDisplayed": actDeact.viewSectionsDisplayed, "possibleCommandsToExecute": actDeact.possibleCommandsToExecute}, null, 2));
+	}
+	else {
+		fs.writeFileSync(path.join(__dirname, "intendedValuesSomeVariables.json"), JSON.stringify({"viewSectionsDisplayed": ["A"], "possibleCommandsToExecute": []}, null, 2));
+	}
+}
 
 module.exports = {
-  activate
+  activate,
+  deactivate
 };
