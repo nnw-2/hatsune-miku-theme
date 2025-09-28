@@ -17,7 +17,13 @@ const defaultValues = {
 	"changeThemeEditor.changetransparencyLineHighlightBackground" : "5a",
 
 	"changeThemeEditor.changecolourLineHighlightBorder": "4b4044",
-	"changeThemeEditor.changetransparencyLineHighlightBorder" : "a1"
+	"changeThemeEditor.changetransparencyLineHighlightBorder" : "a1",
+
+	"changeThemeEditor.changecolourBracketMatchBackground" : "00f9ff",
+	"changeThemeEditor.changetransparencyBracketMatchBackground" : "7c",
+
+	"changeThemeEditor.changecolourBracketMatchBorder" : "4b4044",
+	"changeThemeEditor.changetransparencyBracketMatchBorder" : "ff"
 };
 
 function getOrSetThemeValues(commandId , colourTrue , getOrSet="get" , updateValue=null) {
@@ -1987,8 +1993,8 @@ function themeConfig(commandId , updateValue , colourTrue) {
 	"editorIndentGuide.background1": "#29ccd09f",
 	"editorIndentGuide.activeBackground1": "#00f9ff",
 	"editorRuler.foreground": "#264f78",
-	"editorBracketMatch.background": "#00f9ff7c", //changes the background of the matching brackets
-	"editorBracketMatch.border": "#4b4044",       //changes the border of the matching brackets
+	"editorBracketMatch.background": "#" + getOrSetThemeValues("changeThemeEditor.changecolourBracketMatchBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyBracketMatchBackground",false),
+	"editorBracketMatch.border": "#" + getOrSetThemeValues("changeThemeEditor.changecolourBracketMatchBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyBracketMatchBorder",false),
 	"editor.foldBackground": "#fdf6eb16",
 	"editorOverviewRuler.background": "#264f78bf",
 	"editorOverviewRuler.border": "#df116180",
@@ -2186,7 +2192,6 @@ class actDeact {
 		vscode.commands.executeCommand('setContext', 'currentView', actDeact.viewSectionsDisplayed[actDeact.viewSectionsDisplayed.length - 1]);
 
 		const changeDisplayedView = vscode.commands.registerCommand("changeDisplayedView", (WhichViewToDisplay) => {
-			console.log(WhichViewToDisplay);
 			if (WhichViewToDisplay[0] == "_") {
 				var commandsToPush = WhichViewToDisplay.split('_').slice(1, -1);
 				commandsToPush.length == 1 ? (actDeact.possibleCommandsToExecute.push(commandsToPush[0]), WhichViewToDisplay = "oneButton") : (actDeact.possibleCommandsToExecute.push(commandsToPush[0],commandsToPush[2]), WhichViewToDisplay = "twoButtons");

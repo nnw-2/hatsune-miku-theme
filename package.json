@@ -58,12 +58,12 @@
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Of Thing Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])\n[Change Background Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBackground__changetransparencyLineHighlightBackground_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Of Thing Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])\n[Change Background Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBackground__changetransparencyLineHighlightBackground_\"])\n[Change Background Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBackground__changetransparencyBracketMatchBackground_\"])",
                 "when" : "currentView == 'B'"
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])\n[Change Border Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBorder__changetransparencyLineHighlightBorder_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])\n[Change Border Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBorder__changetransparencyLineHighlightBorder_\"])\n[Change Border Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBorder__changetransparencyBracketMatchBorder_\"])",
                 "when" : "currentView == 'C'"
             },
             {
@@ -93,6 +93,22 @@
             }
         ],
         "commands": [
+            {
+                "command": "changeThemeEditor.changecolourBracketMatchBackground",
+                "title": "Miku Theme: Change Colours Bracket Match Background"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyBracketMatchBackground",
+                "title": "Miku Theme: Change Transparency Bracket Match Background"
+            },
+            {
+                "command": "changeThemeEditor.changecolourBracketMatchBorder",
+                "title": "Miku Theme: Change Colours Bracket Match Border"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyBracketMatchBorder",
+                "title": "Miku Theme: Change Transparency Bracket Match Border"
+            },
             {
                 "command": "changeThemeEditor.changecolourWordHighlightBackground",
                 "title": "Miku Theme: Change Colours of Word Highlight Background"
@@ -142,8 +158,5 @@
                 "title": "Miku Theme: Don't Use This Command 4"
             }
         ]
-    },
-    "devDependencies": {
-        "vscode": "^1.90.0"
     }
 }
