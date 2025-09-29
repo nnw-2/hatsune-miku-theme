@@ -94,6 +94,14 @@
         ],
         "commands": [
             {
+                "command" : "",
+                "title": "Miku Theme:Change"
+            },
+            {
+                "command": "",
+                "title": ""
+            },
+            {
                 "command": "changeThemeEditor.changecolourBracketMatchBackground",
                 "title": "Miku Theme: Change Colours Bracket Match Background"
             },

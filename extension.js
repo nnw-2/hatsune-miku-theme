@@ -23,7 +23,13 @@ const defaultValues = {
 	"changeThemeEditor.changetransparencyBracketMatchBackground" : "7c",
 
 	"changeThemeEditor.changecolourBracketMatchBorder" : "4b4044",
-	"changeThemeEditor.changetransparencyBracketMatchBorder" : "ff"
+	"changeThemeEditor.changetransparencyBracketMatchBorder" : "ff",
+
+	"changeThemeEditor.changecolourFindMatchBackground" : "019ebb",
+	"changeThemeEditor.changetransparencyFindMatchBackground" : "d7",
+
+	"changeThemeEditor.changecolourFindMatchBorder" : "df1161",
+	"changeThemeEditor.changetransparencyFindMatchBorder" : "ef"
 };
 
 function getOrSetThemeValues(commandId , colourTrue , getOrSet="get" , updateValue=null) {
@@ -1966,22 +1972,22 @@ function themeConfig(commandId , updateValue , colourTrue) {
 	"editor.background": "#20272f", 
 	"editor.foreground": "#019ebb",
 	"editorLineNumber.foreground": "#019ebb",
-	"editorCursor.foreground": "#95d3d2",
-	"editorCursor.background": "#131517",
+	"editorCursor.foreground": "#95d3d2", //change the cursor colour (vertical bar when typing)
+	"editorCursor.background": "#131517", 
 	"editor.selectionBackground": "#264f78",
 	"editor.inactiveSelectionBackground": "#3a3d41fe",
 	"editorWhitespace.foreground": "#e3e4e229",
 	"editor.selectionHighlightBackground": "#add6ff26",
 	"editor.selectionHighlightBorder": "#495F77",
-	"editor.findMatchBackground": "#019ebbd7",
-	"editor.findMatchBorder": "#df1161ef",
-	"editor.findMatchHighlightBackground": "#29ccd050",
+	"editor.findMatchBackground": "#019ebbd7",   //when using find(cntrl f) the background of currently selected match will be this
+	"editor.findMatchBorder": "#df1161ef", 
+	"editor.findMatchHighlightBackground": "#29ccd050", // background of non currently selceted matches will be this.
 	"editor.findMatchHighlightBorder": "#ffffff00",
 	"editor.findRangeHighlightBackground": "#264f7856",
-	"editor.findRangeHighlightBorder": "#ffffff00",
-	"editor.rangeHighlightBackground": "#fdf6eb16",
+	"editor.findRangeHighlightBorder": "#ffffff00", 
+	"editor.rangeHighlightBackground": "#fdf6eb16", //bakground of pop up menu suggested auto complete when typing i think
 	"editor.rangeHighlightBorder": "#ffffff00",
-	"editor.hoverHighlightBackground": "#29ccd044",
+	"editor.hoverHighlightBackground": "#29ccd044", //This should change non cursor selected but mouse hover baacground
 	"editor.wordHighlightStrongBackground": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBackground",false),
 	"editor.wordHighlightStrongBorder": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBorder",false),
 	"editor.wordHighlightBackground": "#" + getOrSetThemeValues("changeThemeEditor.changecolourWordHighlightBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyWordHighlightBackground",false),
