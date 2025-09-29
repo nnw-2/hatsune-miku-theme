@@ -1,4 +1,4 @@
-## [1.1.4] - 2025-09-11
+## [1.1.5] - 2025-09-29
 
 ### Changes
 
@@ -11,3 +11,4 @@
 * Hopefully fixed unwanted behaviour from theme editor which wasn't present when testing - user needing to reload window manually to see changes.
 * Added a better interface for the editor customiser to account for the many new buttons which will need to be added.
 * 2 new functional buttons added. After changing the colour or transparency of something it no longer brings you back to the first view, it will instead stay on the view where you clicked the button to change something. More convenient.
+* 2 new buttons added. Change matching bracket background + border.
