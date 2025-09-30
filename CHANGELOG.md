@@ -1,4 +1,4 @@
-## [1.1.5] - 2025-09-29
+## [1.1.6] - 2025-09-30
 
 ### Changes
 
@@ -12,3 +12,4 @@
 * Added a better interface for the editor customiser to account for the many new buttons which will need to be added.
 * 2 new functional buttons added. After changing the colour or transparency of something it no longer brings you back to the first view, it will instead stay on the view where you clicked the button to change something. More convenient.
 * 2 new buttons added. Change matching bracket background + border.
+* 2 new buttons added. Change Find Match background and border.
