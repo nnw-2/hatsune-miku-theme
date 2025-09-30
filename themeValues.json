@@ -5,7 +5,9 @@
     "changeThemeEditor.changecolourLineHighlightBackground": "019ebb",
     "changeThemeEditor.changecolourLineHighlightBorder": "4b4044",
     "changeThemeEditor.changecolourBracketMatchBackground": "00f9ff",
-    "changeThemeEditor.changecolourBracketMatchBorder": "4b4044"
+    "changeThemeEditor.changecolourBracketMatchBorder": "4b4044",
+    "changeThemeEditor.changecolourFindMatchBackground": "019ebb",
+    "changeThemeEditor.changecolourFindMatchBorder": "df1161"
   },
   "transparency": {
     "changeThemeEditor.changetransparencyWordHighlightBackground": "b5",
@@ -13,6 +15,8 @@
     "changeThemeEditor.changetransparencyLineHighlightBackground": "5a",
     "changeThemeEditor.changetransparencyLineHighlightBorder": "a1",
     "changeThemeEditor.changetransparencyBracketMatchBackground": "7c",
-    "changeThemeEditor.changetransparencyBracketMatchBorder": "ff"
+    "changeThemeEditor.changetransparencyBracketMatchBorder": "ff",
+    "changeThemeEditor.changetransparencyFindMatchBackground": "d7",
+    "changeThemeEditor.changetransparencyFindMatchBorder": "ef"
   }
 }

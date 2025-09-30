@@ -1979,8 +1979,8 @@ function themeConfig(commandId , updateValue , colourTrue) {
 	"editorWhitespace.foreground": "#e3e4e229",
 	"editor.selectionHighlightBackground": "#add6ff26",
 	"editor.selectionHighlightBorder": "#495F77",
-	"editor.findMatchBackground": "#019ebbd7",   //when using find(cntrl f) the background of currently selected match will be this
-	"editor.findMatchBorder": "#df1161ef", 
+	"editor.findMatchBackground": "#" + getOrSetThemeValues("changeThemeEditor.changecolourFindMatchBackground",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyFindMatchBackground",false),
+	"editor.findMatchBorder": "#" + getOrSetThemeValues("changeThemeEditor.changecolourFindMatchBorder",true) + getOrSetThemeValues("changeThemeEditor.changetransparencyFindMatchBorder",false),
 	"editor.findMatchHighlightBackground": "#29ccd050", // background of non currently selceted matches will be this.
 	"editor.findMatchHighlightBorder": "#ffffff00",
 	"editor.findRangeHighlightBackground": "#264f7856",

@@ -58,12 +58,12 @@
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Of Thing Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])\n[Change Background Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBackground__changetransparencyLineHighlightBackground_\"])\n[Change Background Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBackground__changetransparencyBracketMatchBackground_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the background of one thing within the editor.\n[Change Background Of Thing Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBackground__changetransparencyWordHighlightBackground_\"])\n[Change Background Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBackground__changetransparencyLineHighlightBackground_\"])\n[Change Background Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBackground__changetransparencyBracketMatchBackground_\"])\n[Change Background Currently Selected Find (ctrl F/cmd F)](command:changeDisplayedView?[\"_changecolourFindMatchBackground__changetransparencyFindMatchBackground_\"])",
                 "when" : "currentView == 'B'"
             },
             {
                 "view" : "mikuActivityBarContent",
-                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])\n[Change Border Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBorder__changetransparencyLineHighlightBorder_\"])\n[Change Border Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBorder__changetransparencyBracketMatchBorder_\"])",
+                "contents": "[Return](command:returnPreviousDisplayedView)\nEach button will give the option to change the border of one thing within the editor.\n[Change Border Selected With Cursor](command:changeDisplayedView?[\"_changecolourWordHighlightBorder__changetransparencyWordHighlightBorder_\"])\n[Change Border Of Line The Cursor Is On](command:changeDisplayedView?[\"_changecolourLineHighlightBorder__changetransparencyLineHighlightBorder_\"])\n[Change Border Of The Bracket The Cursor Has Selected](command:changeDisplayedView?[\"_changecolourBracketMatchBorder__changetransparencyBracketMatchBorder_\"])\n[Change Border Currently Selected Find (ctrl F/cmd F)](command:changeDisplayedView?[\"_changecolourFindMatchBorder__changetransparencyFindMatchBorder_\"])",
                 "when" : "currentView == 'C'"
             },
             {
@@ -94,12 +94,20 @@
         ],
         "commands": [
             {
-                "command" : "",
-                "title": "Miku Theme:Change"
+                "command" : "changeThemeEditor.changecolourFindMatchBackground",
+                "title": "Miku Theme: Change Colours Find Match Background"
             },
             {
-                "command": "",
-                "title": ""
+                "command": "changeThemeEditor.changetransparencyFindMatchBackground",
+                "title": "Miku Theme: Change Transparency Find Match Background"
+            },
+            {
+                "command" : "changeThemeEditor.changecolourFindMatchBorder",
+                "title": "Miku Theme: Change Colours Find Match Border"
+            },
+            {
+                "command": "changeThemeEditor.changetransparencyFindMatchBorder",
+                "title": "Miku Theme: Change Transparency Find Match Border"
             },
             {
                 "command": "changeThemeEditor.changecolourBracketMatchBackground",
